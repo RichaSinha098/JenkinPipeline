@@ -27,7 +27,7 @@ pipeline {
 			}
 			post{
 				always{
-					junit 'target/surefire-reports/*.xml'
+					junit '/var/jenkins_home/workspace/CD-Pipeline/gameoflife-core/target/surefire-reports/*.xml'
 				}
 			}
 		}
