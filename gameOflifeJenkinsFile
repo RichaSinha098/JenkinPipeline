@@ -1,0 +1,35 @@
+pipeline {
+	agent any
+	tools {
+		maven 'maven 3.6.0'
+		jdk 'jdk8'
+	}
+	stages {
+		stage ('initialize') {
+			steps {
+			sh '''
+				echo "PATH = ${PATH}"
+				echo "M2_PATH = ${M2_PATH}"
+				echo "JAVA_HOME = /usr/bin/java"
+			'''
+			}
+		}
+		stage ('Build') {
+			steps{
+				echo "Building the release..."
+				sh 'mvn clean package'
+			}
+		}
+		stage ('Test') {
+			steps {
+				echo 'Testing the code ...'
+				sh 'mvn test'
+			}
+			post{
+				always{
+					junit 'target/surefire-reports/*.xml'
+				}
+			}
+		}
+	}
+}
