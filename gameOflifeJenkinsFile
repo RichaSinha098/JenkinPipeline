@@ -1,11 +1,11 @@
-pipeline{
+pipeline {
 	agent any
-	tool{
+	tool {
 		maven 'Maven 3.3.9'
 		jdk 'jdk8'
 	}
 	stages {
-		stage ('Build'){
+		stage ('Build') {
 			steps{
 				echo "Building the release..."
 				sh 'mvn clean package'
