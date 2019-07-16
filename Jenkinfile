@@ -1,0 +1,46 @@
+pipeline{
+	agent any
+	stages {
+		stage ('one') {
+			steps {
+				echo "This is first stage .."
+			}
+		}
+		stage ('two') {
+			steps{
+				input ('do you want to proceed')
+			}
+		}
+		stage ('three') {
+		when {
+			not {
+				branch "master"
+			}
+		}
+		steps {
+			echo "Not master we can proceed"
+		}
+		}
+		stage ('Four'){
+			parallel {
+				stage ('Unit Test') {
+					steps {
+						echo "Unit testing"
+					}
+				}
+				stage ('Integration Testing') {
+					agent {
+						docker {
+							image 'ubuntu'
+						}
+					}
+					steps {
+						echo "Intergration testing"
+					}
+					
+				}
+				
+			}
+		}
+	}
+}
