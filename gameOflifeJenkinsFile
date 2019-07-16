@@ -6,11 +6,11 @@ pipeline {
 	}
 	stages {
 		stage ('initialize') {
-			sh ...
+			sh '''
 			echo "PATH = ${PATH}"
 			echo "M2_PATH = ${M2_PATH}"
 			echo "JAVA_HOME = ${JAVA_HOME}"
-			...
+			'''
 		}
 		stage ('Build') {
 			steps{
