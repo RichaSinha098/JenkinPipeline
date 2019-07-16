@@ -25,11 +25,7 @@ pipeline {
 				echo 'Testing the code ...'
 				sh 'mvn test'
 			}
-			post{
-				always{
-					junit '/var/jenkins_home/workspace/CD-Pipeline/gameoflife-core/target/surefire-reports/*.xml'
-				}
-			}
+			
 		}
 	}
 }
