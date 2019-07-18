@@ -5,15 +5,7 @@ pipeline {
 		jdk 'jdk8'
 	}
 	stages {
-		stage ('initialize') {
-			steps {
-			sh '''
-				echo "PATH = ${PATH}"
-				echo "M2_PATH = ${M2_PATH}"
-				echo "JAVA_HOME = /usr/bin/java"
-			'''
-			}
-		}
+		
 		stage ('Build') {
 			steps{
 				echo "Building the release..."
