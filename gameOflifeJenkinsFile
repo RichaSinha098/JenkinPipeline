@@ -16,7 +16,7 @@ pipeline {
 		stage ('Deploy on tomcat') {
 			steps {
 			    echo 'Deploying build on tomcat server'
-				sh 'scp /var/jenkins_home/workspace/DeployProj/gameoflife-web/target/gameoflife.war nupur@172.30.76.58:/opt/apache-tomcat-8.5.43/webapps'
+				sh 'scp /var/jenkins_home/workspace/DeployProj/gameoflife-web/target/gameoflife.war nupur@172.30.76.58:/opt/tomcat/apache-tomcat-8.5.43/webapps'
 			}
 		}
 			
