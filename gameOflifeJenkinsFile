@@ -12,12 +12,7 @@ pipeline {
 				sh 'mvn clean package'
 			}
 		}
-		stage ('Test') {
-			steps {
-				echo 'Testing the code ...'
-				sh 'mvn test'
-			}
-	        }
+		
 		stage ('Deploy on tomcat') {
 			steps {
 			    echo 'Deploying build on tomcat server'
